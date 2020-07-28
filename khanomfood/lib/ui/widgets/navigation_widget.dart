@@ -2,6 +2,10 @@ import 'package:khanomfood/ui/pages.dart';
 import 'package:khanomfood/main.dart';
 
 import 'package:flutter/material.dart';
+import 'package:khanomfood/ui/pages/kitchen_page.dart';
+import 'package:khanomfood/ui/pages/notification_page.dart';
+import 'package:khanomfood/ui/pages/setting_page.dart';
+import 'package:khanomfood/ui/pages/storefront_page.dart';
 
 class NavigationWidget extends StatelessWidget {
   @override
@@ -28,19 +32,11 @@ class NavigationChild extends StatefulWidget {
 
 class _NavigationState extends State<NavigationChild> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-    ),
-    Text(
-      'Index 1: Business',
-    ),
-    Text(
-      'Index 2: School',
-    ),
-    Text(
-      'Index 2: School',
-    ),
+  List<Widget> _widgetOptions = <Widget>[
+    NotificationPage(),
+    KitchenPage(),
+    StorefrontPage(),
+    SettingPage(),
   ];
 
   void _onItemTapped(int index) {

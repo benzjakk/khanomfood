@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:khanomfood/ui/pages.dart';
 import 'package:khanomfood/ui/widgets.dart';
 
-class MyHomePage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,21 +12,21 @@ class MyHomePage extends StatelessWidget {
         primarySwatch: Colors.pink,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePageChild(title: 'Khanom Food'),
+      home: HomePageChild(title: 'Khanom Food'),
     );
   }
 }
 
-class MyHomePageChild extends StatefulWidget {
-  MyHomePageChild({Key key, this.title}) : super(key: key);
+class HomePageChild extends StatefulWidget {
+  HomePageChild({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePageChild> {
+class _HomePageState extends State<HomePageChild> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -38,10 +38,6 @@ class _MyHomePageState extends State<MyHomePageChild> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(widget.title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
