@@ -48,10 +48,6 @@ class _NavigationState extends State<NavigationChild> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Khanom Food'),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
