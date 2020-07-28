@@ -40,7 +40,10 @@ class _SettingPageState extends State<SettingPageChild> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Setting'),
+        title: const Text(
+          'Setting',
+          style: TextStyle(fontFamily: 'Bubblegum', fontSize: 25),
+        ),
       ),
       body: Center(
         child: Column(

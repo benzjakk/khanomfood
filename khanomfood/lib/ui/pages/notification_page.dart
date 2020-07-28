@@ -40,7 +40,10 @@ class _NotificationPageState extends State<NotificationPageChild> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Notification'),
+        title: const Text(
+          'Notification',
+          style: TextStyle(fontFamily: 'Bubblegum', fontSize: 25),
+        ),
       ),
       body: Center(
         child: Column(

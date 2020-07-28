@@ -56,20 +56,44 @@ class _NavigationState extends State<NavigationChild> {
         selectedItemColor: Colors.pink,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            title: Text('Notification'),
+            icon: Icon(
+              Icons.notifications,
+              size: 35,
+            ),
+            title: Text(
+              'แจ้งเตือน',
+              style: TextStyle(fontFamily: 'supermarket', fontSize: 14),
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant),
-            title: Text('Kitchen'),
+            icon: Icon(
+              Icons.restaurant,
+              size: 35,
+            ),
+            title: Text(
+              'Kitchen',
+              style: TextStyle(fontFamily: 'Bubblegum', fontSize: 15),
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_basket),
-            title: Text('Shop'),
+            icon: Icon(
+              Icons.shopping_basket,
+              size: 35,
+            ),
+            title: Text(
+              'Shop',
+              style: TextStyle(fontFamily: 'Bubblegum', fontSize: 15),
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Setting'),
+            icon: Icon(
+              Icons.settings,
+              size: 35,
+            ),
+            title: Text(
+              'Setting',
+              style: TextStyle(fontFamily: 'Bubblegum', fontSize: 15),
+            ),
           ),
         ],
         currentIndex: _selectedIndex,

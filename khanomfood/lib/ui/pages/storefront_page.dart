@@ -40,7 +40,10 @@ class _StorefrontPageState extends State<StorefrontPageChild> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Storefront'),
+        title: const Text(
+          'Storefront',
+          style: TextStyle(fontFamily: 'Bubblegum', fontSize: 25),
+        ),
       ),
       body: Center(
         child: Column(

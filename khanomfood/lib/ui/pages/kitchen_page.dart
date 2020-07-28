@@ -40,7 +40,10 @@ class _KitchenPageState extends State<KitchenPageChild> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Kitchen'),
+        title: const Text(
+          'Kitchen',
+          style: TextStyle(fontFamily: 'Bubblegum', fontSize: 25),
+        ),
       ),
       body: Center(
         child: Column(
