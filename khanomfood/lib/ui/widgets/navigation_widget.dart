@@ -57,12 +57,12 @@ class _NavigationState extends State<NavigationChild> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.notifications,
+              Icons.sms,
               size: 35,
             ),
             title: Text(
               'แจ้งเตือน',
-              style: TextStyle(fontFamily: 'supermarket', fontSize: 14),
+              style: TextStyle(fontFamily: 'supermarket', fontSize: 15),
             ),
           ),
           BottomNavigationBarItem(
@@ -71,8 +71,8 @@ class _NavigationState extends State<NavigationChild> {
               size: 35,
             ),
             title: Text(
-              'Kitchen',
-              style: TextStyle(fontFamily: 'Bubblegum', fontSize: 15),
+              'ห้องครัว',
+              style: TextStyle(fontFamily: 'supermarket', fontSize: 15),
             ),
           ),
           BottomNavigationBarItem(
@@ -81,18 +81,18 @@ class _NavigationState extends State<NavigationChild> {
               size: 35,
             ),
             title: Text(
-              'Shop',
-              style: TextStyle(fontFamily: 'Bubblegum', fontSize: 15),
+              'หน้าร้าน',
+              style: TextStyle(fontFamily: 'supermarket', fontSize: 15),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.settings,
+              Icons.person,
               size: 35,
             ),
             title: Text(
-              'Setting',
-              style: TextStyle(fontFamily: 'Bubblegum', fontSize: 15),
+              'ตั้งค่า',
+              style: TextStyle(fontFamily: 'supermarket', fontSize: 15),
             ),
           ),
         ],
