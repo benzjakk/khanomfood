@@ -29,6 +29,9 @@ class StorefrontPageChild extends StatefulWidget {
 class _StorefrontPageState extends State<StorefrontPageChild> {
   int _counter = 0;
 
+  final PageController _pageController = PageController();
+  final ScrollController scrollController = ScrollController();
+
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -39,21 +42,90 @@ class _StorefrontPageState extends State<StorefrontPageChild> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        backgroundColor: Colors.white,
         title: const Text(
-          'Storefront',
-          style: TextStyle(fontFamily: 'Bubblegum', fontSize: 25),
+          'ร้านป้าทิพย์หน้าหอ',
+          style: TextStyle(
+              fontFamily: 'supermarket', fontSize: 30, color: Colors.black),
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'StorefrontPage',
+      body: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  _pageController.animateToPage(0,
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.linear);
+                },
+                child: Text(
+                  'แจ้งเตือน',
+                  style: TextStyle(
+                      fontFamily: 'supermarket',
+                      fontSize: 20,
+                      color: Colors.black),
+                ),
+              ),
+              FlatButton(
+                onPressed: () {
+                  _pageController.animateToPage(1,
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.linear);
+                },
+                child: Text(
+                  'แจ้งเตือน',
+                  style: TextStyle(
+                      fontFamily: 'supermarket',
+                      fontSize: 20,
+                      color: Colors.black),
+                ),
+              ),
+            ],
+          ),
+          Expanded(
+            child: PageView(
+              controller: _pageController,
+              pageSnapping: true,
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                Container(
+                  color: Colors.pinkAccent,
+                  child: ListView.builder(
+                    controller: scrollController,
+                    itemCount: 100,
+                    physics: ClampingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Text('page 0 item $index');
+                    },
+                  ),
+                ),
+                Container(
+                  color: Colors.lightBlue,
+                  child: ListView.builder(
+                    controller: scrollController,
+                    itemCount: 100,
+                    physics: ClampingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Text('page 1 item $index');
+                    },
+                  ),
+                ),
+                Container(
+                  color: Colors.lightGreen,
+                  child: ListView.builder(
+                    controller: scrollController,
+                    itemCount: 100,
+                    physics: ClampingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Text('page 2 item $index');
+                    },
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
