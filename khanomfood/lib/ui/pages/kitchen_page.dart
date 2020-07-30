@@ -39,18 +39,31 @@ class _KitchenPageState extends State<KitchenPageChild> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        backgroundColor: Colors.white,
         title: const Text(
-          'Kitchen',
-          style: TextStyle(fontFamily: 'Bubblegum', fontSize: 25),
+          'ห้องครัว',
+          style: TextStyle(
+              fontFamily: 'supermarket', fontSize: 30, color: Colors.black),
         ),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          padding: const EdgeInsets.all(8),
           children: <Widget>[
-            Text(
-              'KitchenPage',
+            Container(
+              height: 50,
+              color: Colors.amber[600],
+              child: const Center(child: Text('Entry A')),
+            ),
+            Container(
+              height: 50,
+              color: Colors.amber[500],
+              child: const Center(child: Text('Entry B')),
+            ),
+            Container(
+              height: 50,
+              color: Colors.amber[100],
+              child: const Center(child: Text('Entry C')),
             ),
           ],
         ),

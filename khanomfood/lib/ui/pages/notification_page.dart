@@ -28,11 +28,24 @@ class NotificationPageChild extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPageChild> {
-  int _counter = 0;
+  final List<String> entries = <String>['1', '2', '3'];
+  bool noti = true;
+  Color notiColor = Colors.pink;
+  Color hisColor = Colors.black;
 
-  void _incrementCounter() {
+  void notiPress() {
     setState(() {
-      _counter++;
+      noti = true;
+      notiColor = Colors.pink;
+      hisColor = Colors.black;
+    });
+  }
+
+  void hisPress() {
+    setState(() {
+      noti = false;
+      notiColor = Colors.black;
+      hisColor = Colors.pink;
     });
   }
 
@@ -46,109 +59,148 @@ class _NotificationPageState extends State<NotificationPageChild> {
           style: TextStyle(fontFamily: 'Righteous', fontSize: 35),
         ),
       ),
-      body: Row(
+      body: Column(
         children: <Widget>[
-          Expanded(
-            child: Container(
-              color: Colors.white,
-              height: 155,
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Text(
-                          'ยอดขายวันนี้',
-                          style: TextStyle(
-                              fontFamily: 'supermarket', fontSize: 20),
-                        ),
+          Container(
+            color: Colors.white,
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        'ยอดขายวันนี้',
+                        style:
+                            TextStyle(fontFamily: 'supermarket', fontSize: 20),
                       ),
-                      Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
+                    ),
+                    Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        'ขณะนี้ร้านกำลังเปิดอยู่',
+                        style: TextStyle(
+                            fontFamily: 'supermarket',
+                            fontSize: 15,
+                            color: Colors.green),
+                      ),
+                    ),
+                  ],
+                ),
+                Table(
+                  children: [
+                    TableRow(children: [
+                      Center(
                         child: Text(
-                          'ขณะนี้ร้านกำลังเปิดอยู่',
+                          '1520',
                           style: TextStyle(
                               fontFamily: 'supermarket',
-                              fontSize: 15,
-                              color: Colors.green),
+                              fontSize: 50,
+                              color: Colors.pink),
                         ),
                       ),
-                    ],
-                  ),
-                  Table(
-                    children: [
-                      TableRow(children: [
-                        Center(
-                          child: Text(
-                            '1520',
-                            style: TextStyle(
-                                fontFamily: 'supermarket',
-                                fontSize: 50,
-                                color: Colors.pink),
-                          ),
+                      Center(
+                        child: Text(
+                          '46',
+                          style: TextStyle(
+                              fontFamily: 'supermarket',
+                              fontSize: 50,
+                              color: Colors.pink),
                         ),
-                        Center(
-                          child: Text(
-                            '46',
-                            style: TextStyle(
-                                fontFamily: 'supermarket',
-                                fontSize: 50,
-                                color: Colors.pink),
-                          ),
+                      ),
+                    ]),
+                    TableRow(children: [
+                      Center(
+                        child: Text(
+                          'บาท',
+                          style: TextStyle(
+                              fontFamily: 'supermarket',
+                              fontSize: 20,
+                              color: Colors.black),
                         ),
-                      ]),
-                      TableRow(children: [
-                        Center(
-                          child: Text(
-                            'บาท',
-                            style: TextStyle(
-                                fontFamily: 'supermarket',
-                                fontSize: 20,
-                                color: Colors.black),
-                          ),
+                      ),
+                      Center(
+                        child: Text(
+                          'ครั้ง',
+                          style: TextStyle(
+                              fontFamily: 'supermarket',
+                              fontSize: 20,
+                              color: Colors.black),
                         ),
-                        Center(
-                          child: Text(
-                            'ครั้ง',
-                            style: TextStyle(
-                                fontFamily: 'supermarket',
-                                fontSize: 20,
-                                color: Colors.black),
-                          ),
+                      ),
+                    ]),
+                    TableRow(children: [
+                      FlatButton(
+                        onPressed: notiPress,
+                        child: Text(
+                          'แจ้งเตือน',
+                          style: TextStyle(
+                              fontFamily: 'supermarket',
+                              fontSize: 20,
+                              color: notiColor),
                         ),
-                      ]),
-                      TableRow(children: [
-                        FlatButton(
-                          onPressed: () => {},
-                          child: Text(
-                            'แจ้งเตือน',
-                            style: TextStyle(
-                                fontFamily: 'supermarket',
-                                fontSize: 20,
-                                color: Colors.pink),
-                          ),
+                      ),
+                      FlatButton(
+                        onPressed: hisPress,
+                        child: Text(
+                          'ประวัติ',
+                          style: TextStyle(
+                              fontFamily: 'supermarket',
+                              fontSize: 20,
+                              color: hisColor),
                         ),
-                        FlatButton(
-                          onPressed: () => {},
-                          child: Text(
-                            'ประวัติ',
-                            style: TextStyle(
-                                fontFamily: 'supermarket',
-                                fontSize: 20,
-                                color: Colors.black),
-                          ),
-                        ),
-                      ]),
-                    ],
-                  )
-                ],
-              ),
+                      ),
+                    ]),
+                  ],
+                )
+              ],
             ),
-          )
+          ),
+          StreamBuilder(
+              builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
+            if (noti) {
+              return notification(context);
+            } else {
+              return history(context);
+            }
+          })
         ],
       ),
     );
+  }
+
+  Widget notification(BuildContext context) {
+    return Expanded(
+        child: ListView.builder(
+            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+            itemCount: entries.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Container(
+                  height: 150,
+                  color: Colors.white,
+                  child: Center(child: Text('Entry ${entries[index]}')),
+                ),
+              );
+            }));
+  }
+
+  Widget history(BuildContext context) {
+    return Expanded(
+        child: ListView.builder(
+            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+            itemCount: entries.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Container(
+                  height: 50,
+                  color: Colors.white,
+                  child: Center(child: Text('Entry ${entries[index]}')),
+                ),
+              );
+            }));
   }
 }
