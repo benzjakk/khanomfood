@@ -29,13 +29,16 @@ class NotificationPageChild extends StatefulWidget {
 
 class _NotificationPageState extends State<NotificationPageChild> {
   final List<String> entries = <String>['1', '2', '3'];
-  bool noti = true;
   Color notiColor = Colors.pink;
   Color hisColor = Colors.black;
 
+  final PageController _pageController = PageController();
+  final ScrollController _scrollController = ScrollController();
+
   void notiPress() {
     setState(() {
-      noti = true;
+      _pageController.animateToPage(0,
+          duration: Duration(milliseconds: 200), curve: Curves.linear);
       notiColor = Colors.pink;
       hisColor = Colors.black;
     });
@@ -43,7 +46,8 @@ class _NotificationPageState extends State<NotificationPageChild> {
 
   void hisPress() {
     setState(() {
-      noti = false;
+      _pageController.animateToPage(1,
+          duration: Duration(milliseconds: 200), curve: Curves.linear);
       notiColor = Colors.black;
       hisColor = Colors.pink;
     });
@@ -157,50 +161,61 @@ class _NotificationPageState extends State<NotificationPageChild> {
               ],
             ),
           ),
-          StreamBuilder(
-              builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
-            if (noti) {
-              return notification(context);
-            } else {
-              return history(context);
-            }
-          })
+          Expanded(
+            child: PageView(
+              controller: _pageController,
+              pageSnapping: true,
+              scrollDirection: Axis.horizontal,
+              onPageChanged: (index) {
+                if (index == 0)
+                  setState(() {
+                    notiColor = Colors.pink;
+                    hisColor = Colors.black;
+                  });
+                else
+                  setState(() {
+                    notiColor = Colors.black;
+                    hisColor = Colors.pink;
+                  });
+              },
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: entries.length,
+                    physics: ClampingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: EdgeInsets.fromLTRB(2, 0, 2, 2),
+                        height: 150,
+                        color: Colors.white,
+                        child: Center(child: Text('Entry ${entries[index]}')),
+                      );
+                    },
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: entries.length,
+                    physics: ClampingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: EdgeInsets.fromLTRB(2, 0, 2, 2),
+                        height: 50,
+                        color: Colors.white,
+                        child: Center(child: Text('Entry ${entries[index]}')),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
-  }
-
-  Widget notification(BuildContext context) {
-    return Expanded(
-        child: ListView.builder(
-            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-            itemCount: entries.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
-                child: Container(
-                  height: 150,
-                  color: Colors.white,
-                  child: Center(child: Text('Entry ${entries[index]}')),
-                ),
-              );
-            }));
-  }
-
-  Widget history(BuildContext context) {
-    return Expanded(
-        child: ListView.builder(
-            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-            itemCount: entries.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
-                child: Container(
-                  height: 50,
-                  color: Colors.white,
-                  child: Center(child: Text('Entry ${entries[index]}')),
-                ),
-              );
-            }));
   }
 }

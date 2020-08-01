@@ -28,21 +28,19 @@ class StorefrontPageChild extends StatefulWidget {
 }
 
 class _StorefrontPageState extends State<StorefrontPageChild> {
-  int _counter = 0;
-
   final PageController _pageController = PageController();
-  final ScrollController scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  Color _1 = Colors.pink;
+  Color _2 = Colors.black;
+  Color _3 = Colors.black;
+  Color _4 = Colors.black;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
           'ร้านป้าทิพย์หน้าหอ',
@@ -56,87 +54,67 @@ class _StorefrontPageState extends State<StorefrontPageChild> {
             color: Colors.white,
             child: Row(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                  child: Container(
-                    width: 80,
-                    height: 20,
-                    child: FlatButton(
-                      onPressed: () {
-                        _pageController.animateToPage(0,
-                            duration: Duration(milliseconds: 200),
-                            curve: Curves.linear);
-                      },
-                      child: Text(
-                        'เมนูแนะนำ',
-                        style: TextStyle(
-                            fontFamily: 'supermarket',
-                            fontSize: 15,
-                            color: Colors.black),
-                      ),
+                Container(
+                  width: 80,
+                  height: 20,
+                  child: FlatButton(
+                    onPressed: () {
+                      _pageController.animateToPage(0,
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.linear);
+                    },
+                    child: Text(
+                      'เมนูแนะนำ',
+                      style: TextStyle(
+                          fontFamily: 'supermarket', fontSize: 15, color: _1),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                  child: Container(
-                    width: 85,
-                    height: 20,
-                    child: FlatButton(
-                      onPressed: () {
-                        _pageController.animateToPage(1,
-                            duration: Duration(milliseconds: 200),
-                            curve: Curves.linear);
-                      },
-                      child: Text(
-                        'เมนูทั้งหมด',
-                        style: TextStyle(
-                            fontFamily: 'supermarket',
-                            fontSize: 15,
-                            color: Colors.black),
-                      ),
+                Container(
+                  width: 85,
+                  height: 20,
+                  child: FlatButton(
+                    onPressed: () {
+                      _pageController.animateToPage(1,
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.linear);
+                    },
+                    child: Text(
+                      'เมนูทั้งหมด',
+                      style: TextStyle(
+                          fontFamily: 'supermarket', fontSize: 15, color: _2),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                  child: Container(
-                    width: 85,
-                    height: 20,
-                    child: FlatButton(
-                      onPressed: () {
-                        _pageController.animateToPage(2,
-                            duration: Duration(milliseconds: 200),
-                            curve: Curves.linear);
-                      },
-                      child: Text(
-                        'เครื่องดื่ม',
-                        style: TextStyle(
-                            fontFamily: 'supermarket',
-                            fontSize: 15,
-                            color: Colors.black),
-                      ),
+                Container(
+                  width: 85,
+                  height: 20,
+                  child: FlatButton(
+                    onPressed: () {
+                      _pageController.animateToPage(2,
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.linear);
+                    },
+                    child: Text(
+                      'เครื่องดื่ม',
+                      style: TextStyle(
+                          fontFamily: 'supermarket', fontSize: 15, color: _3),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                  child: Container(
-                    width: 85,
-                    height: 20,
-                    child: FlatButton(
-                      onPressed: () {
-                        _pageController.animateToPage(3,
-                            duration: Duration(milliseconds: 200),
-                            curve: Curves.linear);
-                      },
-                      child: Text(
-                        'ของกินเล่น',
-                        style: TextStyle(
-                            fontFamily: 'supermarket',
-                            fontSize: 15,
-                            color: Colors.black),
-                      ),
+                Container(
+                  width: 85,
+                  height: 20,
+                  child: FlatButton(
+                    onPressed: () {
+                      _pageController.animateToPage(3,
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.linear);
+                    },
+                    child: Text(
+                      'ของกินเล่น',
+                      style: TextStyle(
+                          fontFamily: 'supermarket', fontSize: 15, color: _4),
                     ),
                   ),
                 ),
@@ -151,38 +129,41 @@ class _StorefrontPageState extends State<StorefrontPageChild> {
               children: <Widget>[
                 Container(
                   child: ListView.builder(
-                    controller: scrollController,
+                    controller: _scrollController,
                     itemCount: 100,
                     physics: ClampingScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                        child: Container(
-                            color: Colors.white,
-                            child: Text('page 0 item $index')),
-                      );
+                      return Container(child: Text('page 0 item $index'));
                     },
                   ),
                 ),
                 Container(
-                  color: Colors.lightBlue,
                   child: ListView.builder(
-                    controller: scrollController,
+                    controller: _scrollController,
                     itemCount: 100,
                     physics: ClampingScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return Text('page 1 item $index');
+                      return Container(child: Text('page 1 item $index'));
                     },
                   ),
                 ),
                 Container(
-                  color: Colors.lightGreen,
                   child: ListView.builder(
-                    controller: scrollController,
+                    controller: _scrollController,
                     itemCount: 100,
                     physics: ClampingScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return Text('page 2 item $index');
+                      return Container(child: Text('page 2 item $index'));
+                    },
+                  ),
+                ),
+                Container(
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: 100,
+                    physics: ClampingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Container(child: Text('page 3 item $index'));
                     },
                   ),
                 ),
