@@ -126,6 +126,36 @@ class _StorefrontPageState extends State<StorefrontPageChild> {
               controller: _pageController,
               pageSnapping: true,
               scrollDirection: Axis.horizontal,
+              onPageChanged: (index) {
+                if (index == 0)
+                  setState(() {
+                    _1 = Colors.pink;
+                    _2 = Colors.black;
+                    _3 = Colors.black;
+                    _4 = Colors.black;
+                  });
+                else if (index == 1)
+                  setState(() {
+                    _1 = Colors.black;
+                    _2 = Colors.pink;
+                    _3 = Colors.black;
+                    _4 = Colors.black;
+                  });
+                else if (index == 2)
+                  setState(() {
+                    _1 = Colors.black;
+                    _2 = Colors.black;
+                    _3 = Colors.pink;
+                    _4 = Colors.black;
+                  });
+                else
+                  setState(() {
+                    _1 = Colors.black;
+                    _2 = Colors.black;
+                    _3 = Colors.black;
+                    _4 = Colors.pink;
+                  });
+              },
               children: <Widget>[
                 Container(
                   child: ListView.builder(

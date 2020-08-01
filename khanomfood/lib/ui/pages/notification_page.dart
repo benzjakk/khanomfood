@@ -39,8 +39,6 @@ class _NotificationPageState extends State<NotificationPageChild> {
     setState(() {
       _pageController.animateToPage(0,
           duration: Duration(milliseconds: 200), curve: Curves.linear);
-      notiColor = Colors.pink;
-      hisColor = Colors.black;
     });
   }
 
@@ -48,8 +46,6 @@ class _NotificationPageState extends State<NotificationPageChild> {
     setState(() {
       _pageController.animateToPage(1,
           duration: Duration(milliseconds: 200), curve: Curves.linear);
-      notiColor = Colors.black;
-      hisColor = Colors.pink;
     });
   }
 
