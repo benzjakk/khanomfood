@@ -28,7 +28,30 @@ class NotificationPageChild extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPageChild> {
-  final List<String> entries = <String>['1', '2', '3'];
+  List<String> entries = <String>['1', '2', '3'];
+  List<String> menu = <String>[
+    'ข้าวมันไก่ x 1 50฿',
+    'ข้าวไข่เจียว x 2 100฿\nแกงจืดหมูสับ x 1 60฿',
+    'ข้าวไข่เจียว x 2 100฿',
+  ];
+  List<Icon> ic = <Icon>[
+    Icon(
+      Icons.motorcycle,
+      size: 30,
+    ),
+    Icon(
+      Icons.store,
+      size: 30,
+    ),
+  ];
+  List<int> icn = <int>[0, 0, 1];
+  List<String> where = <String>[
+    'AJ Mansion 653/11 ลาดกระบัง กรุงเทพ 10520',
+    'AJ Mansion 653/11 ลาดกระบัง กรุงเทพ 10520',
+    'มารับที่ร้าน',
+  ];
+  List<int> price = <int>[50, 160, 100];
+
   Color notiColor = Colors.pink;
   Color hisColor = Colors.black;
 
@@ -184,9 +207,140 @@ class _NotificationPageState extends State<NotificationPageChild> {
                     itemBuilder: (context, index) {
                       return Container(
                         margin: EdgeInsets.fromLTRB(2, 0, 2, 2),
-                        height: 150,
                         color: Colors.white,
-                        child: Center(child: Text('Entry ${entries[index]}')),
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    'รายการที่ ${entries[index]}',
+                                    style: TextStyle(
+                                        fontFamily: 'supermarket',
+                                        fontSize: 15,
+                                        color: Colors.grey),
+                                  ),
+                                ),
+                                Spacer(),
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: ic[icn[index]],
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    '${menu[index]}',
+                                    style: TextStyle(
+                                        fontFamily: 'supermarket',
+                                        fontSize: 25,
+                                        color: hisColor),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    'สถานที่จัดส่ง',
+                                    style: TextStyle(
+                                        fontFamily: 'supermarket',
+                                        fontSize: 15,
+                                        color: Colors.grey),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    '${where[index]}',
+                                    style: TextStyle(
+                                      fontFamily: 'supermarket',
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  margin: EdgeInsets.all(5),
+                                  width: 70.0,
+                                  height: 30.0,
+                                  child: OutlineButton(
+                                    onPressed: () => {},
+                                    shape: new RoundedRectangleBorder(
+                                        borderRadius:
+                                            new BorderRadius.circular(30.0)),
+                                    borderSide: BorderSide(
+                                        width: 1.0, style: BorderStyle.solid),
+                                    child: Text(
+                                      'แผนที่',
+                                      style: TextStyle(
+                                        fontFamily: 'supermarket',
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  margin: EdgeInsets.all(5),
+                                  child: Text(
+                                    'รวม ${price[index]}฿',
+                                    style: TextStyle(
+                                      fontFamily: 'supermarket',
+                                      fontSize: 35,
+                                      color: Colors.green,
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                Container(
+                                  margin: EdgeInsets.all(5),
+                                  child: RaisedButton(
+                                    onPressed: () => {},
+                                    color: Colors.green,
+                                    child: Text(
+                                      'ยอมรับ',
+                                      style: TextStyle(
+                                        fontFamily: 'supermarket',
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.all(5),
+                                  child: RaisedButton(
+                                    onPressed: () => {},
+                                    color: Colors.red,
+                                    child: Text(
+                                      'ปฎิเสธ',
+                                      style: TextStyle(
+                                        fontFamily: 'supermarket',
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       );
                     },
                   ),
