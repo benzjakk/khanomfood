@@ -199,14 +199,14 @@ class _NotificationPageState extends State<NotificationPageChild> {
               },
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                  margin: EdgeInsets.fromLTRB(0, 1, 0, 0),
                   child: ListView.builder(
                     controller: _scrollController,
                     itemCount: entries.length,
                     physics: ClampingScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.fromLTRB(2, 0, 2, 2),
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
                         color: Colors.white,
                         child: Column(
                           children: <Widget>[
