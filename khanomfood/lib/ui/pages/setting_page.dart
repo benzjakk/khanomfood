@@ -6,53 +6,29 @@ import 'package:khanomfood/ui/widgets.dart';
 class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Khanom Food',
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: SettingPageChild(title: 'Khanom Food'),
-    );
+    return SettingPageChild();
   }
 }
 
 class SettingPageChild extends StatefulWidget {
-  SettingPageChild({Key key, this.title}) : super(key: key);
-
-  final String title;
+  SettingPageChild({Key key}) : super(key: key);
 
   @override
   _SettingPageState createState() => _SettingPageState();
 }
 
 class _SettingPageState extends State<SettingPageChild> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
         title: const Text(
-          'Setting',
-          style: TextStyle(fontFamily: 'Bubblegum', fontSize: 25),
-        ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'SettingPage',
-            ),
-          ],
+          'โปรไฟล์',
+          style: TextStyle(
+              fontFamily: 'supermarket', fontSize: 30, color: Colors.black),
         ),
       ),
     );
