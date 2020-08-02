@@ -10,22 +10,12 @@ import 'package:khanomfood/ui/pages/storefront_page.dart';
 class NavigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Navigation',
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: NavigationChild(title: 'Navigation'),
-    );
+    return NavigationChild();
   }
 }
 
 class NavigationChild extends StatefulWidget {
-  NavigationChild({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+  NavigationChild({Key key}) : super(key: key);
   @override
   _NavigationState createState() => _NavigationState();
 }
@@ -53,7 +43,7 @@ class _NavigationState extends State<NavigationChild> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.pink,
+        selectedItemColor: Colors.pink[300],
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(

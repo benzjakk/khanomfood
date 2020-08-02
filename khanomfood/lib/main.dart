@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Khanom Food',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.pink[300],
+        primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: NavigationWidget(),

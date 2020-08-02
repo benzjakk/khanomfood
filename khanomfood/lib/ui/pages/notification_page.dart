@@ -6,22 +6,12 @@ import 'package:khanomfood/ui/widgets.dart';
 class NotificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Khanom Food',
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-        scaffoldBackgroundColor: Colors.grey,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: NotificationPageChild(title: 'Khanom Food'),
-    );
+    return NotificationPageChild();
   }
 }
 
 class NotificationPageChild extends StatefulWidget {
-  NotificationPageChild({Key key, this.title}) : super(key: key);
-
-  final String title;
+  NotificationPageChild({Key key}) : super(key: key);
 
   @override
   _NotificationPageState createState() => _NotificationPageState();
@@ -60,7 +50,8 @@ class _NotificationPageState extends State<NotificationPageChild> {
         centerTitle: true,
         title: const Text(
           'Khanom',
-          style: TextStyle(fontFamily: 'Righteous', fontSize: 35),
+          style: TextStyle(
+              fontFamily: 'Righteous', fontSize: 35, color: Colors.white),
         ),
       ),
       body: Column(

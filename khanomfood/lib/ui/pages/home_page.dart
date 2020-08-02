@@ -6,14 +6,7 @@ import 'package:khanomfood/ui/widgets.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Khanom Food',
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: HomePageChild(title: 'Khanom Food'),
-    );
+    return HomePageChild(title: 'Khanom Food');
   }
 }
 
