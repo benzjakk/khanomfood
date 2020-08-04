@@ -65,6 +65,7 @@ class _NotificationPageState extends State<NotificationPageChild> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
@@ -197,7 +198,8 @@ class _NotificationPageState extends State<NotificationPageChild> {
                     physics: ClampingScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 3),
                         color: Colors.white,
                         child: Column(
                           children: <Widget>[
