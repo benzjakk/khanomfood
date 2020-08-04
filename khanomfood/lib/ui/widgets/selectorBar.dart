@@ -7,7 +7,7 @@ class SelectorBar {
   PageController pageController = PageController();
   void UpdatePageController(int index) {
     pageController.animateToPage(index,
-        duration: Duration(milliseconds: 500), curve: Curves.linear);
+        duration: Duration(milliseconds: 300), curve: Curves.linear);
   }
 
   void UpdateSelectedColors(List<Color> selectedColors) {
