@@ -379,7 +379,7 @@ class _NotificationPageState extends State<NotificationPageChild> {
                                 Row(
                                   children: <Widget>[
                                     Text(
-                                      'รายการอาหาร',
+                                      'รายการอาหาร Test GitKraken',
                                       style: TextStyle(
                                         fontFamily: 'supermarket',
                                         fontSize: 15,
