@@ -34,6 +34,9 @@ class _KitchenPageState extends State<KitchenPageChild> {
         "AJ Mansion"),
     OrderList(113, [MenuDetail("ข้าวมันไก่", 3)], true, "AJ Park"),
     OrderList(113, [MenuDetail("ข้าวมันไก่", 3)], false, ""),
+    OrderList(113, [MenuDetail("ข้าวมันไก่", 3)], false, ""),
+    OrderList(113, [MenuDetail("ข้าวมันไก่", 3)], false, ""),
+    OrderList(113, [MenuDetail("ข้าวมันไก่", 3)], false, ""),
   ];
 
   @override

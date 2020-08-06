@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "54582003232",
+    "firebase_url": "https://khanom-food.firebaseio.com",
+    "project_id": "khanom-food",
+    "storage_bucket": "khanom-food.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54582003232:android:287a0f20f05a0d84169e45",
+        "android_client_info": {
+          "package_name": "com.dereck.khanomfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54582003232-vsejtpljjcsfdm65sti44j086asp0v3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR7rxDhs-A2qx4t-j9hcMPDuTiswPK4Pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54582003232-vsejtpljjcsfdm65sti44j086asp0v3v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
