@@ -379,7 +379,7 @@ class _NotificationPageState extends State<NotificationPageChild> {
                                 Row(
                                   children: <Widget>[
                                     Text(
-                                      'ข้าสสสสสส',
+                                      'รายการอาหาร',
                                       style: TextStyle(
                                         fontFamily: 'supermarket',
                                         fontSize: 15,
