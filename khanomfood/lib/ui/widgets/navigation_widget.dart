@@ -1,11 +1,6 @@
 import 'package:khanomfood/ui/pages.dart';
-import 'package:khanomfood/main.dart';
 
 import 'package:flutter/material.dart';
-import 'package:khanomfood/ui/pages/kitchen_page.dart';
-import 'package:khanomfood/ui/pages/notification_page.dart';
-import 'package:khanomfood/ui/pages/setting_page.dart';
-import 'package:khanomfood/ui/pages/storefront_page.dart';
 
 class NavigationWidget extends StatelessWidget {
   @override
