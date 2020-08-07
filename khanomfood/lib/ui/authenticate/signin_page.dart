@@ -3,21 +3,16 @@ import 'package:khanomfood/services/auth.dart';
 import 'package:khanomfood/ui/pages.dart';
 import 'package:khanomfood/ui/widgets.dart';
 
-class SignInPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SignInPageChild();
-  }
-}
-
-class SignInPageChild extends StatefulWidget {
-  SignInPageChild({Key key}) : super(key: key);
-
+class SignInPage extends StatefulWidget {
+  final Function toggleView;
+  SignInPage({this.toggleView});
   @override
   _SignInPageState createState() => _SignInPageState();
 }
 
-class _SignInPageState extends State<SignInPageChild> {
+class _SignInPageState extends State<SignInPage> {
+  String email = '';
+  String password = '';
   Widget _DisplayPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,6 +32,11 @@ class _SignInPageState extends State<SignInPageChild> {
           ),
           width: 300,
           child: TextField(
+            onChanged: (val) {
+              setState(() {
+                password = val;
+              });
+            },
             obscureText: true,
             style: TextStyle(
               color: Colors.white,
@@ -77,6 +77,11 @@ class _SignInPageState extends State<SignInPageChild> {
           ),
           width: 300,
           child: TextField(
+            onChanged: (val) {
+              setState(() {
+                email = val;
+              });
+            },
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.white,
@@ -101,16 +106,23 @@ class _SignInPageState extends State<SignInPageChild> {
   }
 
   Widget _DisplayLoginBT() {
-    return RaisedButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: Colors.white,
-        onPressed: () {},
-        child: Text("เข้าสู่ระบบ",
-            style: TextStyle(
-                fontFamily: 'supermarket',
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.pink[300])));
+    return ButtonTheme(
+      minWidth: 300,
+      child: RaisedButton(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          color: Colors.white,
+          onPressed: () async {
+            print(email);
+            print(password);
+          },
+          child: Text("เข้าสู่ระบบ",
+              style: TextStyle(
+                  fontFamily: 'supermarket',
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.pink[300]))),
+    );
   }
 
   @override
@@ -134,46 +146,52 @@ class _SignInPageState extends State<SignInPageChild> {
             ])),
       ),
       Container(),
-      Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(
-            height: 80,
-          ),
-          Center(
-            child: Text("Khanom",
-                style: TextStyle(
-                    fontFamily: 'Righteous',
-                    fontSize: 50,
-                    color: Colors.white)),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          _DisplayEmailTF(),
-          SizedBox(
-            height: 20,
-          ),
-          _DisplayPasswordTF(),
-          SizedBox(
-            height: 20,
-          ),
-          _DisplayLoginBT(),
-          SizedBox(
-            height: 5,
-          ),
-          FlatButton(
-            onPressed: () {},
-            child: Text(
-              "สมัครฟรีที่นี่",
-              style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'supermarket',
-              ),
-            ),
-          )
-        ],
-      ),
+      ListView.builder(
+          itemCount: 1,
+          itemBuilder: (context, index) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(
+                  height: 80,
+                ),
+                Center(
+                  child: Text("Khanom",
+                      style: TextStyle(
+                          fontFamily: 'Righteous',
+                          fontSize: 50,
+                          color: Colors.white)),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                _DisplayEmailTF(),
+                SizedBox(
+                  height: 20,
+                ),
+                _DisplayPasswordTF(),
+                SizedBox(
+                  height: 20,
+                ),
+                _DisplayLoginBT(),
+                SizedBox(
+                  height: 5,
+                ),
+                FlatButton(
+                  onPressed: () {
+                    widget.toggleView();
+                  },
+                  child: Text(
+                    "สมัครฟรีที่นี่",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'supermarket',
+                    ),
+                  ),
+                )
+              ],
+            );
+          }),
     ]));
   }
 }

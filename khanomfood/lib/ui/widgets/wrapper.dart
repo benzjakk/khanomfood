@@ -1,8 +1,9 @@
-import 'package:khanomfood/ui/pages/signin_page.dart';
 import 'package:provider/provider.dart';
 import 'package:khanomfood/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:khanomfood/ui/widgets/navigation_widget.dart';
+import 'package:khanomfood/ui/pages.dart';
+import 'package:khanomfood/ui/widgets.dart';
 
 class Wrapper extends StatelessWidget {
   @override
@@ -12,6 +13,6 @@ class Wrapper extends StatelessWidget {
     if (user != null) {
       return NavigationWidget();
     } else
-      return SignInPage();
+      return Authenticate();
   }
 }
