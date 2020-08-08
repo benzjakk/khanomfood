@@ -21,8 +21,7 @@ class _KitchenPageState extends State<KitchenPageChild> {
 
   List<Color> selectedColors = [Colors.pink]
     ..addAll(List.filled(4, Colors.black));
-  SelectorBar selectorBar =
-      SelectorBar(['ทั้งหมด', 'เตรียม', 'กำลังทำ', 'จัดส่ง', 'เสร็จสิ้น']);
+  SelectorBar selectorBar = SelectorBar(['กำลังทำ', 'จัดส่ง', 'เสร็จสิ้น']);
   List<OrderList> orderLists = [
     OrderList(
         112,
@@ -66,8 +65,6 @@ class _KitchenPageState extends State<KitchenPageChild> {
               pageSnapping: true,
               scrollDirection: Axis.horizontal,
               children: <Widget>[
-                DisplayOrderList(orderLists),
-                DisplayOrderList(orderLists),
                 DisplayOrderList(orderLists),
                 DisplayOrderList(orderLists),
                 DisplayOrderList(orderLists),
