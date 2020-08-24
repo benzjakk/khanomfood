@@ -19,7 +19,11 @@ dynamic showAlert(String title, String body, dynamic context) {
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
           new FlatButton(
-            child: new Text("Close"),
+            child: new Text(
+              "Close",
+              style: TextStyle(
+                  fontFamily: 'supermarket', fontSize: 26, color: Colors.white),
+            ),
             onPressed: () {
               Navigator.of(context).pop();
             },

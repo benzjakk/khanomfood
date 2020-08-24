@@ -34,10 +34,12 @@ class _RegisterPageState extends State<RegisterPage> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   String email = '';
-  String email2 = 'test12345@gmail.com';
+
   String password = '';
   String password2 = '';
   String error = '';
+  bool loading = false;
+
   Widget _DisplayPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,6 +155,9 @@ class _RegisterPageState extends State<RegisterPage> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           color: Colors.white,
           onPressed: () async {
+            setState(() {
+              loading = true;
+            });
             print(email);
             if (_formKey.currentState.validate()) {
               if (password == password2) {
@@ -162,6 +167,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   showAlert(
                       "ผิดพลาด", "รูปแบบ Email ไม่ถูกต้องหรือซ้ำกัน", context);
                   setState(() {
+                    loading = false;
                     error = 'Please supply a valid email';
                   });
                 } else {
@@ -184,78 +190,80 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(children: <Widget>[
-      Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [
-              0.1,
-              0.6,
-              0.9,
-            ],
-                colors: [
-              Colors.pink[200],
-              Colors.pink[300],
-              Colors.pink[400],
-            ])),
-      ),
-      Container(),
-      ListView.builder(
-          itemCount: 1,
-          itemBuilder: (context, index) {
-            return Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    height: 80,
-                  ),
-                  Center(
-                    child: Text("Khanom",
-                        style: TextStyle(
-                            fontFamily: 'Righteous',
-                            fontSize: 50,
-                            color: Colors.white)),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  _DisplayEmailTF(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  _DisplayPasswordTF(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  _DisplayRepasswordTF(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  _DisplayRegisBT(),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  FlatButton(
-                    onPressed: () {
-                      widget.toggleView();
-                    },
-                    child: Text(
-                      "มีบัญชีแล้ว?",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'supermarket',
-                      ),
+    return loading
+        ? Loading()
+        : Scaffold(
+            body: Stack(children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [
+                    0.1,
+                    0.6,
+                    0.9,
+                  ],
+                      colors: [
+                    Colors.pink[200],
+                    Colors.pink[300],
+                    Colors.pink[400],
+                  ])),
+            ),
+            Container(),
+            ListView.builder(
+                itemCount: 1,
+                itemBuilder: (context, index) {
+                  return Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 80,
+                        ),
+                        Center(
+                          child: Text("Khanom",
+                              style: TextStyle(
+                                  fontFamily: 'Righteous',
+                                  fontSize: 50,
+                                  color: Colors.white)),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        _DisplayEmailTF(),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        _DisplayPasswordTF(),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        _DisplayRepasswordTF(),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        _DisplayRegisBT(),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        FlatButton(
+                          onPressed: () {
+                            widget.toggleView();
+                          },
+                          child: Text(
+                            "มีบัญชีแล้ว?",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'supermarket',
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                  )
-                ],
-              ),
-            );
-          }),
-    ]));
+                  );
+                }),
+          ]));
   }
 }

@@ -23,8 +23,7 @@ List<Widget> DisplayMenu(List<MenuDetail> menus) {
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
             child: Text(
               "${menu._menuName} x ${menu._menuCount} ",
-              style: TextStyle(
-                  fontFamily: 'supermarket', fontSize: 26, color: Colors.black),
+              style: bodyBlack(),
             ),
           ))
       .toList();
@@ -48,10 +47,7 @@ Container DisplayOrderList(List orderLists) {
                   children: <Widget>[
                     Text(
                       "รายการที่ ${orderLists[index]._orderNo}",
-                      style: TextStyle(
-                          fontFamily: 'supermarket',
-                          fontSize: 22,
-                          color: Colors.grey),
+                      style: headGrey(),
                     ),
                   ]..addAll(DisplayMenu(orderLists[index]._menuDetails))),
               Column(
@@ -61,33 +57,14 @@ Container DisplayOrderList(List orderLists) {
                       Icon(Icons.motorcycle)
                     else
                       Icon(Icons.store),
-                    RaisedButton(
-                      onPressed: () {},
-                      color: Colors.green,
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                              child: Text(
-                                'ขั้นตอนต่อไป',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'supermarket',
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                            )
-                          ],
+                    showRaisedButton(
+                        "ขั้นตอนต่อไป",
+                        Colors.green,
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
                         ),
-                      ),
-                    ),
+                        0)
                   ]),
             ],
           ),

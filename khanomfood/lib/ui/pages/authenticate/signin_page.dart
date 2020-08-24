@@ -16,6 +16,8 @@ class _SignInPageState extends State<SignInPage> {
   String email = '';
   String password = '';
   String error = '';
+  bool loading = false;
+
   Widget _DisplayPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,10 +95,14 @@ class _SignInPageState extends State<SignInPage> {
           color: Colors.white,
           onPressed: () async {
             if (_formKey.currentState.validate()) {
+              setState(() {
+                loading = true;
+              });
               dynamic result =
                   await _auth.signInWithEmailAndPassword(email, password);
               if (result == null) {
                 setState(() {
+                  loading = false;
                   error = 'Could not sign in with those credentials';
                 });
 
@@ -117,73 +123,75 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(children: <Widget>[
-      Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [
-              0.1,
-              0.6,
-              0.9,
-            ],
-                colors: [
-              Colors.pink[200],
-              Colors.pink[300],
-              Colors.pink[400],
-            ])),
-      ),
-      ListView.builder(
-          itemCount: 1,
-          itemBuilder: (context, index) {
-            return Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    height: 80,
-                  ),
-                  Center(
-                    child: Text("Khanom",
-                        style: TextStyle(
-                            fontFamily: 'Righteous',
-                            fontSize: 50,
-                            color: Colors.white)),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  _DisplayEmailTF(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  _DisplayPasswordTF(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  _DisplayLoginBT(),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  FlatButton(
-                    onPressed: () {
-                      widget.toggleView();
-                    },
-                    child: Text(
-                      "สมัครฟรีที่นี่",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'supermarket',
-                      ),
+    return loading
+        ? Loading()
+        : Scaffold(
+            body: Stack(children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [
+                    0.1,
+                    0.6,
+                    0.9,
+                  ],
+                      colors: [
+                    Colors.pink[200],
+                    Colors.pink[300],
+                    Colors.pink[400],
+                  ])),
+            ),
+            ListView.builder(
+                itemCount: 1,
+                itemBuilder: (context, index) {
+                  return Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 80,
+                        ),
+                        Center(
+                          child: Text("Khanom",
+                              style: TextStyle(
+                                  fontFamily: 'Righteous',
+                                  fontSize: 50,
+                                  color: Colors.white)),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        _DisplayEmailTF(),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        _DisplayPasswordTF(),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        _DisplayLoginBT(),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        FlatButton(
+                          onPressed: () {
+                            widget.toggleView();
+                          },
+                          child: Text(
+                            "สมัครฟรีที่นี่",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'supermarket',
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                  )
-                ],
-              ),
-            );
-          }),
-    ]));
+                  );
+                }),
+          ]));
   }
 }
